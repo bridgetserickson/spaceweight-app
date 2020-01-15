@@ -11,8 +11,8 @@ var planets = [
     ['Venus', 0.9032],
     ['Mercury', 0.377],
     ['Sun', 27.9]
-                    ];    
-
+                    ];  
+                      
 var sel = document.getElementById('planets');
 var fragment = document.createDocumentFragment();
 planets.forEach(function(planet, index) {
@@ -23,10 +23,14 @@ planets.forEach(function(planet, index) {
 });
 sel.appendChild(fragment);
 
-function handleClickEvent(e) {
+function calculateWeight(weight, planetName) {
     var input = document.getElementById('user-weight').value;
     var planetWeight = document.getElementById('planets').value;
+    var result = input * planetWeight;
+    return result;
+  }
+
+function handleClickEvent(e) {
     var planetName = sel.options[sel.selectedIndex].innerHTML;
-    var output = input * planetWeight;
-    document.getElementById('output').innerText = `If you were on ${planetName}, you would weigh ${output}lbs!`;
+    document.getElementById('output').innerText = `If you were on ${planetName}, you would weigh ${calculateWeight()}lbs!`;
     }
